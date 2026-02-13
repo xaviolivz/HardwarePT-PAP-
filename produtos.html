@@ -1,0 +1,244 @@
+<html lang="pt">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produtos - HardwarePT</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <!-- Menu Hambúrguer -->
+                <button class="menu-toggle" onclick="toggleMenu()" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+                <div class="logo">
+                    <a href="index.html" style="display: flex; align-items: center; gap: 0.5rem; text-decoration: none; color: inherit;">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                            <rect width="32" height="32" rx="6" fill="currentColor"/>
+                            <path d="M8 12L16 8L24 12V20L16 24L8 20V12Z" fill="white"/>
+                        </svg>
+                        <span>HardwarePT</span>
+                    </a>
+                </div>
+
+                <div class="header-actions">
+                    <button class="search-btn" onclick="toggleSearch()">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor">
+                            <circle cx="9" cy="9" r="6" stroke-width="2"/>
+                            <path d="M14 14L18 18" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </button>
+                    
+                    <button class="cart-btn" onclick="toggleCart()">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor">
+                            <path d="M2 2H4L6 14H16L18 6H6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <span class="cart-count" id="cartCount">0</span>
+                    </button>
+
+                    <div id="userMenu">
+                        <a href="login.html" class="login-btn" title="Entrar na conta">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                                <circle cx="12" cy="7" r="4"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="search-overlay" id="searchOverlay">
+        <div class="search-container">
+            <input type="text" placeholder="Pesquisar produtos..." class="search-input" id="searchInput" onkeyup="searchProducts()">
+            <button onclick="toggleSearch()" class="close-search">✕</button>
+        </div>
+    </div>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Todos os Produtos</h1>
+            <p>Explore a nossa coleção completa de hardware</p>
+        </div>
+    </section>
+
+    <section class="products-page">
+        <div class="container">
+            <div class="products-layout">
+                <aside class="filters-sidebar">
+                    <h3>Filtrar por Categoria</h3>
+                    <div class="filter-group">
+                        <label class="filter-option">
+                            <input type="checkbox" value="componentes" checked onchange="filterProductsPage()">
+                            <span>Todos os Produtos</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" value="componentes" onchange="filterProductsPage()">
+                            <span>Processadores</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" value="componentes" onchange="filterProductsPage()">
+                            <span>Motherbaords</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" value="componentes" onchange="filterProductsPage()">
+                            <span>Placas Gráficas</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" value="componentes" onchange="filterProductsPage()">
+                            <span>Memória RAM</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" value="componentes" onchange="filterProductsPage()">
+                            <span>Fontes de Alimentação</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" value="componentes" onchange="filterProductsPage()">
+                            <span>Caixas de PC</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" value="componentes" onchange="filterProductsPage()">
+                            <span>Coolers</span>
+                        </label>
+                    </div>
+                </aside>
+
+                <div class="filter-overlay" onclick="toggleFilters()"></div>
+                    <button class="filter-toggle-btn" onclick="toggleFilters()">
+                        <i class="fas fa-filter"></i>
+                        Mostrar Filtros
+                    </button>
+
+                <div class="products-main">
+                    <div class="products-grid" id="productsGrid">
+                    </div>
+
+                    <div class="pagination-container" style="margin-top: 2rem; text-align: center;">
+                        <div id="pagination"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>Carrinho de Compras</h3>
+            <button onclick="toggleCart()" class="close-cart">✕</button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <div class="empty-cart">
+                <p>O seu carrinho está vazio</p>
+            </div>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cartTotal">€0,00</span>
+            </div>
+            <button class="btn-checkout" onclick="window.location.href='carrinho.html'">Finalizar Compra</button>
+        </div>
+    </div>
+
+    <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" class="invert-logo">
+                            <rect width="32" height="32" rx="6" fill="white"/>
+                            <path d="M8 12L16 8L24 12V20L16 24L8 20V12Z" fill="black"/>
+                        </svg>
+                        <span>HardwarePT</span>
+                    </div>
+                    <p>A sua loja online de confiança para hardware de qualidade com preços competitivos.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Componentes</h4>
+                    <ul>
+                        <li><a href="produtos.html?categoria=processadores">Processadores</a></li>
+                        <li><a href="produtos.html?categoria=motherboards">Motherboards</a></li>
+                        <li><a href="produtos.html?categoria=placas-graficas">Placas Gráficas</a></li>
+                        <li><a href="produtos.html?categoria=memoria">Memória RAM</a></li>
+                        <li><a href="produtos.html?categoria=fontes">Fontes de Alimentação</a></li>
+                        <li><a href="produtos.html?categoria=caixas">Caixas de PC</a></li>
+                        <li><a href="produtos.html?categoria=coolers">Coolers</a></li>
+                        <li><a href="produtos.html?categoria=armazenamento">Armazenamento</a></li>
+                        <li><a href="produtos.html?categoria=acessorios">Acessórios</a></li>
+
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Empresa</h4>
+                    <ul>
+                        <li><a href="sobre.html">Sobre Nós</a></li>
+                        <li><a href="termos.html">Termos de Uso</a></li>
+                        <li><a href="privacidade.html">Privacidade</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Suporte</h4>
+                    <ul>
+                        <li><a href="suporte.html">Centro de Ajuda (FAQ)</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 HardwarePT. Todos os direitos reservados.</p>                
+                <div class="payment-methods">
+                    <div class="payment-icons">
+                        <img src="imagens/mastercard.webp" alt="Mastercard">
+                        <img src="imagens/visa.png" alt="Visa">
+                        <img src="imagens/multibanco.jpg" alt="Multibanco">
+                        <img src="imagens/mbway.jpeg" alt="MB Way">
+                        <img src="imagens/klarna.avif" alt="Klarna">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+<script src="js/config.js"></script>
+<script src="js/api.js"></script>
+<script src="js/app.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/add-to-cart.js"></script>
+<script src="js/carrinho-page.js"></script>
+
+</body>
+</html>
+
+<script>
+    function toggleFilters() {
+    const sidebar = document.querySelector('.filters-sidebar');
+    const overlay = document.querySelector('.filter-overlay');
+    const btn = document.querySelector('.filter-toggle-btn');
+    
+    sidebar.classList.toggle('active');
+    overlay.classList.toggle('active');
+    btn.classList.toggle('active');
+}
+
+document.addEventListener('click', (e) => {
+    const sidebar = document.querySelector('.filters-sidebar');
+    const btn = document.querySelector('.filter-toggle-btn');
+    
+    if (window.innerWidth <= 1024 && 
+        sidebar.classList.contains('active') &&
+        !sidebar.contains(e.target) && 
+        !btn.contains(e.target)) {
+        toggleFilters();
+    }
+});
+</script>

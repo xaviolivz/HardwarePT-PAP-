@@ -1,0 +1,218 @@
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Perfil - HardwarePT</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <!-- Menu Hambúrguer -->
+                <button class="menu-toggle" onclick="toggleMenu()" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+                <div class="logo">
+                    <a href="index.html" style="display: flex; align-items: center; gap: 0.5rem; text-decoration: none; color: inherit;">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                            <rect width="32" height="32" rx="6" fill="currentColor"/>
+                            <path d="M8 12L16 8L24 12V20L16 24L8 20V12Z" fill="white"/>
+                        </svg>
+                        <span>HardwarePT</span>
+                    </a>
+                </div>
+
+                <div class="header-actions">
+                    <button class="search-btn" onclick="toggleSearch()">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor">
+                            <circle cx="9" cy="9" r="6" stroke-width="2"/>
+                            <path d="M14 14L18 18" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </button>
+                    
+                    <button class="cart-btn" onclick="toggleCart()">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor">
+                            <path d="M2 2H4L6 14H16L18 6H6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <span class="cart-count" id="cartCount">0</span>
+                    </button>
+
+                    <div id="userMenu">
+                        <a href="login.html" class="login-btn" title="Entrar na conta">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                                <circle cx="12" cy="7" r="4"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="profile-container">
+    <div class="container">
+        <div class="profile-layout">
+            <aside class="profile-sidebar">
+                <h3>O Meu Perfil</h3>
+                <img src="imagens/img_perfil.avif" alt="Avatar" class="profile-avatar">
+                <nav class="profile-nav">
+                    <a href="#perfil" class="profile-nav-link active">
+                        <i class="fas fa-user"></i>
+                        Informações
+                    </a>
+                    <a href="minhas-compras.html" class="profile-nav-link">
+                        <i class="fas fa-shopping-bag"></i>
+                        As Minhas Compras
+                    </a>
+                    <a href="#morada" class="profile-nav-link">
+                        <i class="fas fa-map-marker-alt"></i>
+                        Moradas
+                    </a>
+                    <button onclick="logout()" class="btn-logout">
+                        <i class="fas fa-sign-out-alt"></i>
+                        Sair
+                    </button>
+                </nav>
+            </aside>
+            
+            <div class="profile-main">
+                <div id="perfil-content" class="profile-card">
+                    <h2>As Minhas Informações</h2>
+                    <form onsubmit="atualizarPerfil(event)">
+                        <div class="form-group">
+                            <label>Nome Completo:</label>
+                            <input type="text" id="nome" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email:</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Telefone:</label>
+                            <input type="tel" id="telefone">
+                        </div>
+                        <div class="form-group">
+                            <label>Morada:</label>
+                            <input type="text" id="morada">
+                        </div>
+                        <button type="submit" class="btn-primary">Guardar Alterações</button>
+                    </form>
+                </div>
+                
+                <div id="pedidos-content" class="profile-card hidden">
+                    <h2>As Minhas Compras</h2>
+                    <table class="orders-table">
+                        <thead>
+                            <tr>
+                                <th>Número</th>
+                                <th>Data</th>
+                                <th>Total</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="pedidos-list">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" class="invert-logo">
+                            <rect width="32" height="32" rx="6" fill="white"/>
+                            <path d="M8 12L16 8L24 12V20L16 24L8 20V12Z" fill="black"/>
+                        </svg>
+                        <span>HardwarePT</span>
+                    </div>
+                    <p>A sua loja online de confiança para hardware de qualidade com preços competitivos.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Componentes</h4>
+                    <ul>
+                        <li><a href="produtos.html?categoria=processadores">Processadores</a></li>
+                        <li><a href="produtos.html?categoria=motherboards">Motherboards</a></li>
+                        <li><a href="produtos.html?categoria=placas-graficas">Placas Gráficas</a></li>
+                        <li><a href="produtos.html?categoria=memoria">Memória RAM</a></li>
+                        <li><a href="produtos.html?categoria=fontes">Fontes de Alimentação</a></li>
+                        <li><a href="produtos.html?categoria=caixas">Caixas de PC</a></li>
+                        <li><a href="produtos.html?categoria=coolers">Coolers</a></li>
+                        <li><a href="produtos.html?categoria=armazenamento">Armazenamento</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Empresa</h4>
+                    <ul>
+                        <li><a href="sobre.html">Sobre Nós</a></li>
+                        <li><a href="termos.html">Termos de Uso</a></li>
+                        <li><a href="privacidade.html">Privacidade</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Suporte</h4>
+                    <ul>
+                        <li><a href="suporte.html">Centro de Ajuda (FAQ)</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 HardwarePT. Todos os direitos reservados.</p>                
+                <div class="payment-methods">
+                    <div class="payment-icons">
+                        <img src="imagens/mastercard.webp" alt="Mastercard">
+                        <img src="imagens/visa.png" alt="Visa">
+                        <img src="imagens/multibanco.jpg" alt="Multibanco">
+                        <img src="imagens/mbway.jpeg" alt="MB Way">
+                        <img src="imagens/klarna.avif" alt="Klarna">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/auth.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/add-to-cart.js"></script>
+    <script src="js/carrinho-page.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            carregarPerfil();
+        });
+
+        function carregarPerfil() {
+            if (perfil.nome) {
+                document.getElementById('nome').value = perfil.nome;
+                document.getElementById('email').value = perfil.email;
+                document.getElementById('telefone').value = perfil.telefone || '';
+                document.getElementById('morada').value = perfil.morada || '';
+            }
+        }
+
+        function atualizarPerfil(e) {
+            e.preventDefault();
+            const perfil = {
+                nome: document.getElementById('nome').value,
+                email: document.getElementById('email').value,
+                telefone: document.getElementById('telefone').value,
+                morada: document.getElementById('morada').value
+            };
+            alert('Perfil atualizado com sucesso!');
+        }
+    </script>
+    
+</body>
+</html>

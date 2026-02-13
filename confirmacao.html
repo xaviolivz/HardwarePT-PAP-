@@ -1,0 +1,176 @@
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedido Confirmado - HardwarePT</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <!-- Menu Hambúrguer -->
+                <button class="menu-toggle" onclick="toggleMenu()" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+                <div class="logo">
+                    <a href="index.html" style="display: flex; align-items: center; gap: 0.5rem; text-decoration: none; color: inherit;">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                            <rect width="32" height="32" rx="6" fill="currentColor"/>
+                            <path d="M8 12L16 8L24 12V20L16 24L8 20V12Z" fill="white"/>
+                        </svg>
+                        <span>HardwarePT</span>
+                    </a>
+                </div>
+
+                <div class="header-actions">
+                    <button class="search-btn" onclick="toggleSearch()">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor">
+                            <circle cx="9" cy="9" r="6" stroke-width="2"/>
+                            <path d="M14 14L18 18" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </button>
+                    
+                    <button class="cart-btn" onclick="toggleCart()">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor">
+                            <path d="M2 2H4L6 14H16L18 6H6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <span class="cart-count" id="cartCount">0</span>
+                    </button>
+
+                    <div id="userMenu">
+                        <a href="login.html" class="login-btn" title="Entrar na conta">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                                <circle cx="12" cy="7" r="4"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="confirmation-section">
+        <div class="container">
+            <div class="confirmation-box">
+                <div class="success-icon">
+                   
+                    <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <circle cx="12" cy="12" r="10" stroke-width="2" stroke="#22c55e"/>
+                        <path d="M9 12l2 2 4-4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="#22c55e"/>
+                    </svg>
+
+                </div>
+
+                <h1>Pedido Confirmado!</h1>
+                <p class="confirmation-message">Obrigado pela sua compra. O seu pedido foi processado com sucesso.</p>
+
+                <div class="order-details">
+                    <div class="order-detail-row">
+                        <span>Número do Pedido:</span>
+                        <strong id="orderNumber"></strong>
+                    </div>
+                    <div class="order-detail-row">
+                        <span>Data:</span>
+                        <strong id="orderDate"></strong>
+                    </div>
+                    <div class="order-detail-row">
+                        <span>Email:</span>
+                        <strong id="orderEmail"></strong>
+                    </div>
+                    <div class="order-detail-row">
+                        <span>Total:</span>
+                        <strong id="orderTotal"></strong>
+                    </div>
+                </div>
+
+                <div class="confirmation-info">
+                    <h3>O que acontece agora?</h3>
+                    <ul>
+                        <li>Receberá um email de confirmação com os detalhes do pedido</li>
+                        <li>Pode consultar o estado do pedido na sua área de cliente</li>
+                        <li>Se tiver dúvidas, contacte o nosso suporte</li>
+                    </ul>
+                </div>
+
+                <div class="confirmation-actions">
+                    <a href="index.html" class="btn-primary">Voltar à Página Inicial</a>
+                    <a href="produtos.html" class="btn-secondary">Continuar a Comprar</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" class="invert-logo">
+                            <rect width="32" height="32" rx="6" fill="white"/>
+                            <path d="M8 12L16 8L24 12V20L16 24L8 20V12Z" fill="black"/>
+                        </svg>
+                        <span>HardwarePT</span>
+                    </div>
+                    <p>A sua loja online de confiança para hardware de qualidade com preços competitivos.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Componentes</h4>
+                    <ul>
+                        <li><a href="produtos.html?categoria=processadores">Processadores</a></li>
+                        <li><a href="produtos.html?categoria=motherboards">Motherboards</a></li>
+                        <li><a href="produtos.html?categoria=placas-graficas">Placas Gráficas</a></li>
+                        <li><a href="produtos.html?categoria=memoria">Memória RAM</a></li>
+                        <li><a href="produtos.html?categoria=fontes">Fontes de Alimentação</a></li>
+                        <li><a href="produtos.html?categoria=caixas">Caixas de PC</a></li>
+                        <li><a href="produtos.html?categoria=coolers">Coolers</a></li>
+                        <li><a href="produtos.html?categoria=armazenamento">Armazenamento</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Empresa</h4>
+                    <ul>
+                        <li><a href="sobre.html">Sobre Nós</a></li>
+                        <li><a href="termos.html">Termos de Uso</a></li>
+                        <li><a href="privacidade.html">Privacidade</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Suporte</h4>
+                    <ul>
+                        <li><a href="suporte.html">Centro de Ajuda (FAQ)</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 HardwarePT. Todos os direitos reservados.</p>                
+                <div class="payment-methods">
+                    <div class="payment-icons">
+                        <img src="imagens/mastercard.webp" alt="Mastercard">
+                        <img src="imagens/visa.png" alt="Visa">
+                        <img src="imagens/multibanco.jpg" alt="Multibanco">
+                        <img src="imagens/mbway.jpeg" alt="MB Way">
+                        <img src="imagens/klarna.avif" alt="Klarna">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+<script src="js/config.js"></script>
+<script src="js/api.js"></script>
+<script src="js/app.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/confirmacao.js"></script>
+<script src="js/add-to-cart.js"></script>
+<script src="js/carrinho-page.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,365 @@
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finalizar Compra - HardwarePT</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <!-- Menu Hambúrguer -->
+                <button class="menu-toggle" onclick="toggleMenu()" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+                <div class="logo">
+                    <a href="index.html" style="display: flex; align-items: center; gap: 0.5rem; text-decoration: none; color: inherit;">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                            <rect width="32" height="32" rx="6" fill="currentColor"/>
+                            <path d="M8 12L16 8L24 12V20L16 24L8 20V12Z" fill="white"/>
+                        </svg>
+                        <span>HardwarePT</span>
+                    </a>
+                </div>
+
+                <div class="header-actions">
+                    <button class="search-btn" onclick="toggleSearch()">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor">
+                            <circle cx="9" cy="9" r="6" stroke-width="2"/>
+                            <path d="M14 14L18 18" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </button>
+                    
+                    <button class="cart-btn" onclick="toggleCart()">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor">
+                            <path d="M2 2H4L6 14H16L18 6H6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <span class="cart-count" id="cartCount">0</span>
+                    </button>
+
+                    <div id="userMenu">
+                        <a href="login.html" class="login-btn" title="Entrar na conta">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                                <circle cx="12" cy="7" r="4"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="checkout checkout-section">
+        <div class="container">
+            <div class="checkout-grid">
+                <div class="checkout-form">
+                    <h2>Informações de Faturação</h2>
+                    
+                    <form id="checkoutForm" onsubmit="processCheckout(event)">
+                        <div class="form-group">
+                            <label for="fullName">Nome Completo </label>
+                            <input type="text" id="fullName" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email </label>
+                            <input type="email" id="email" required>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="phone">Telefone </label>
+                                <input type="tel" id="phone" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="nif">NIF</label>
+                                <input type="text" id="nif" maxlength="9">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="address">Morada </label>
+                            <input type="text" id="address" required>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="city">Cidade </label>
+                                <input type="text" id="city" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="postalCode">Código Postal </label>
+                                <input type="text" id="postalCode" placeholder="0000-000" required>
+                            </div>
+                        </div>
+
+                        <h3 style="margin-top: 2rem;">Método de Pagamento</h3>
+
+                        <div class="payment-methods-advanced">
+                            <label class="payment-row">
+                                <input type="radio" name="payment" value="card" onchange="updatePaymentFields('card')">
+                                <div class="row-ui">
+                                    <img src="imagens/visa.png" class="logo" alt="Visa">
+                                    <img src="imagens/mastercard.webp" class="logo small" alt="Mastercard">
+                                    <div class="info">
+                                        <strong>Cartão de Crédito ou Débito</strong>
+                                        <span>Apenas cartões com 3D Secure</span>
+                                    </div>
+                                </div>
+                            </label>
+                            
+                            <label class="payment-row">
+                                <input type="radio" name="payment" value="multibanco" onchange="updatePaymentFields('multibanco')">
+                                <div class="row-ui">
+                                    <img src="imagens/multibanco2.png" class="logo" alt="Multibanco">
+                                    <div class="info">
+                                        <strong>Multibanco</strong>
+                                        <span>Referência para pagamento numa caixa Multibanco ou Homebanking</span>
+                                    </div>
+                                </div>
+                            </label>
+                            
+                            <label class="payment-row">
+                                <input type="radio" name="payment" value="mbway" checked onchange="updatePaymentFields('mbway')">
+                                <div class="row-ui">
+                                    <img src="imagens/mbway2.webp" class="logo" alt="MB WAY">
+                                    <div class="info">
+                                        <strong>MB WAY</strong>
+                                        <span>Pagamento imediato através do telemóvel</span>
+                                    </div>
+                                </div>
+                            </label>
+
+                            <label class="payment-row">
+                                <input type="radio" name="payment" value="klarna" onchange="updatePaymentFields('klarna')">
+                                <div class="row-ui">
+                                    <img src="imagens/klarna.avif" class="logo" alt="Klarna">
+                                    <div class="info">
+                                        <strong>Klarna</strong>
+                                        <span>Pagamento em 3 prestações sem juros</span>
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+
+                        <div id="paymentFields" class="payment-fields-container">
+                            
+                            <div id="cardFields" class="payment-details" style="display: none;">
+                                <h4>Dados do Cartão</h4>
+                                <div class="form-group">
+                                    <label for="cardNumber">Número do Cartão </label>
+                                    <input type="text" id="cardNumber" placeholder="0000 0000 0000 0000" maxlength="19">
+                                </div>
+                                <div class="form-group">
+                                    <label for="cardName">Nome no Cartão </label>
+                                    <input type="text" id="cardName" placeholder="NOME COMO ESTÁ NO CARTÃO">
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="cardExpiry">Validade </label>
+                                        <input type="text" id="cardExpiry" placeholder="MM/AA" maxlength="5">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="cardCVV">CVV </label>
+                                        <input type="text" id="cardCVV" placeholder="123" maxlength="3">
+                                    </div>
+                                </div>
+                                <div class="secure-badge">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke-width="2"/>
+                                        <path d="M9 12l2 2 4-4" stroke-width="2"/>
+                                    </svg>
+                                    <span>Pagamento protegido por 3D Secure</span>
+                                </div>
+                            </div>
+
+                            <div id="mbwayFields" class="payment-details" style="display: block;">
+                                <h4>Dados MB WAY</h4>
+                                <div class="form-group">
+                                    <label for="mbwayPhone">Número de Telemóvel </label>
+                                    <input type="tel" id="mbwayPhone" placeholder="912 345 678" maxlength="13">
+                                </div>
+                                <div class="info-box">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                        <circle cx="12" cy="12" r="10" stroke-width="2"/>
+                                        <path d="M12 16v-4M12 8h.01" stroke-width="2" stroke-linecap="round"/>
+                                    </svg>
+                                    <span>Irá receber uma notificação MB WAY no seu telemóvel para confirmar o pagamento.</span>
+                                </div>
+                            </div>
+
+                            <div id="multibancoFields" class="payment-details" style="display: none;">
+                                <h4>Referência Multibanco</h4>
+                                <div class="info-box">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                        <circle cx="12" cy="12" r="10" stroke-width="2"/>
+                                        <path d="M12 16v-4M12 8h.01" stroke-width="2" stroke-linecap="round"/>
+                                    </svg>
+                                    <span>Após confirmar a encomenda, irá receber uma referência Multibanco por email para efetuar o pagamento.</span>
+                                </div>
+                                <div class="multibanco-preview">
+                                    <div class="mb-info">
+                                        <span class="label">Entidade:</span>
+                                        <span class="value">Será gerada após confirmação</span>
+                                    </div>
+                                    <div class="mb-info">
+                                        <span class="label">Referência:</span>
+                                        <span class="value">Será gerada após confirmação</span>
+                                    </div>
+                                    <div class="mb-info">
+                                        <span class="label">Validade:</span>
+                                        <span class="value">3 dias úteis</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="klarnaFields" class="payment-details" style="display: none;">
+                                <h4>Pagamento Klarna</h4>
+                                <div class="klarna-installments">
+                                    <div class="installment-option">
+                                        <input type="radio" name="klarnaOption" id="klarna3x" value="3x" checked>
+                                        <label for="klarna3x">
+                                            <strong>3 prestações sem juros</strong>
+                                            <span id="klarnaInstallment">€0,00 / mês</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="info-box">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                        <circle cx="12" cy="12" r="10" stroke-width="2"/>
+                                        <path d="M12 16v-4M12 8h.01" stroke-width="2" stroke-linecap="round"/>
+                                    </svg>
+                                    <span>Será redirecionado para a página da Klarna para completar o pagamento.</span>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group" style="margin-top: 1.5rem;">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="termsAccept" required>
+                                <span>Aceito os <a href="termos.html">Termos de Uso</a> e <a href="privacidade.html">Política de Privacidade</a></span>
+                            </label>
+                        </div>
+
+                        <button type="submit" class="btn-primary btn-large" style="width: 100%; margin-top: 1.5rem;">
+                            Finalizar Compra
+                        </button>
+                    </form>
+                </div>
+
+                <div class="order-summary">
+                    <h3>Resumo do Pedido</h3>
+                    
+                    <div class="summary-items" id="summaryItems">
+                    </div>
+
+                    <div class="summary-totals">
+                        <div class="summary-row">
+                            <span>Subtotal:</span>
+                            <span id="subtotal">€0,00</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>IVA (23%):</span>
+                            <span id="iva">€0,00</span>
+                        </div>
+                        <div class="summary-row total">
+                            <span>Total:</span>
+                            <span id="total">€0,00</span>
+                        </div>
+                    </div>
+
+                    <div class="trust-badges-checkout">
+                        <div class="trust-item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke-width="2"/>
+                            </svg>
+                            <span>Pagamento 100% Seguro</span>
+                        </div>
+                        <div class="trust-item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <circle cx="12" cy="12" r="10" stroke-width="2"/>
+                                <path d="M12 6v6l4 2" stroke-width="2"/>
+                            </svg>
+                            <span>Entrega Instantânea</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" class="invert-logo">
+                            <rect width="32" height="32" rx="6" fill="white"/>
+                            <path d="M8 12L16 8L24 12V20L16 24L8 20V12Z" fill="black"/>
+                        </svg>
+                        <span>HardwarePT</span>
+                    </div>
+                    <p>A sua loja online de confiança para hardware de qualidade com preços competitivos.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Componentes</h4>
+                    <ul>
+                        <li><a href="produtos.html?categoria=processadores">Processadores</a></li>
+                        <li><a href="produtos.html?categoria=motherboards">Motherboards</a></li>
+                        <li><a href="produtos.html?categoria=placas-graficas">Placas Gráficas</a></li>
+                        <li><a href="produtos.html?categoria=memoria">Memória RAM</a></li>
+                        <li><a href="produtos.html?categoria=fontes">Fontes de Alimentação</a></li>
+                        <li><a href="produtos.html?categoria=caixas">Caixas de PC</a></li>
+                        <li><a href="produtos.html?categoria=coolers">Coolers</a></li>
+                        <li><a href="produtos.html?categoria=armazenamento">Armazenamento</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Empresa</h4>
+                    <ul>
+                        <li><a href="sobre.html">Sobre Nós</a></li>
+                        <li><a href="termos.html">Termos de Uso</a></li>
+                        <li><a href="privacidade.html">Privacidade</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Suporte</h4>
+                    <ul>
+                        <li><a href="suporte.html">Centro de Ajuda (FAQ)</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 HardwarePT. Todos os direitos reservados.</p>                
+                <div class="payment-methods">
+                    <div class="payment-icons">
+                        <img src="imagens/mastercard.webp" alt="Mastercard">
+                        <img src="imagens/visa.png" alt="Visa">
+                        <img src="imagens/multibanco.jpg" alt="Multibanco">
+                        <img src="imagens/mbway.jpeg" alt="MB Way">
+                        <img src="imagens/klarna.avif" alt="Klarna">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/config.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/checkout.js"></script>
+    <script src="js/add-to-cart.js"></script>
+    <script src="js/carrinho-page.js"></script>
+
+</body>
+</html>

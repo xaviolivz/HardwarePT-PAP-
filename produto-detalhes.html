@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="pt">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do Produto - HardwarePT</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <button class="menu-toggle" onclick="toggleMenu()" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+                <div class="logo">
+                    <a href="index.html" style="display: flex; align-items: center; gap: 0.5rem; text-decoration: none; color: inherit;">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                            <rect width="32" height="32" rx="6" fill="currentColor"/>
+                            <path d="M8 12L16 8L24 12V20L16 24L8 20V12Z" fill="white"/>
+                        </svg>
+                        <span>HardwarePT</span>
+                    </a>
+                </div>
+
+                <div class="header-actions">
+                    <button class="search-btn" onclick="toggleSearch()">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor">
+                            <circle cx="9" cy="9" r="6" stroke-width="2"/>
+                            <path d="M14 14L18 18" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </button>
+                    
+                    <button class="cart-btn" onclick="toggleCart()">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor">
+                            <path d="M2 2H4L6 14H16L18 6H6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <span class="cart-count" id="cartCount">0</span>
+                    </button>
+
+                    <div id="userMenu">
+                        <a href="login.html" class="login-btn" title="Entrar na conta">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                                <circle cx="12" cy="7" r="4"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="search-overlay" id="searchOverlay">
+        <div class="search-container">
+            <input type="text" placeholder="Pesquisar produtos..." class="search-input">
+            <button onclick="toggleSearch()" class="close-search">✕</button>
+        </div>
+    </div>
+
+    <section class="product-details-section">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">Início</a> / 
+                <a href="produtos.html">Produtos</a> / 
+                <a href="#" id="breadcrumbCategory">Categoria</a> /
+                <span id="productBreadcrumb">Produto</span>
+            </div>
+
+            <div class="product-main-grid">
+                <div class="product-gallery">
+                    <div class="main-image">
+                        <img id="productImage" src="" alt="Produto">
+                    </div>
+                </div>
+
+                <div class="product-info-detailed">
+                    <div class="product-category-badge" id="productCategory">Categoria</div>
+                    <h1 class="product-title" id="productName">Nome do Produto</h1>
+                    
+                    <div class="product-rating-reviews">
+                        <span class="stars">★★★★★</span>
+                        <span class="rating-text">(4.8 de 5 - 127 avaliações)</span>
+                    </div>
+
+                    <div class="price-box">
+                        <div class="price-label">Preço</div>
+                        <div id="productPriceBox">
+                            <span class="current-price" id="currentPrice">€0,00</span>
+                            <span class="old-price-detail" id="oldPrice"></span>
+                        </div>
+                        <div id="savingsBox"></div>
+                    </div>
+
+                    <div class="stock-info" id="stockInfo">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                            <polyline points="22 4 12 14.01 9 11.01"/>
+                        </svg>
+                        <span id="stockText">Em stock</span>
+                    </div>
+
+                    <div class="quantity-selector">
+                        <label for="productQuantity">Quantidade:</label>
+                        <div class="quantity-controls">
+                            <button class="quantity-btn" onclick="decreaseQuantity()" id="decreaseBtn">−</button>
+                            <input type="number" id="productQuantity" class="quantity-input" value="1" min="1" max="99" readonly>
+                            <button class="quantity-btn" onclick="increaseQuantity()">+</button>
+                        </div>
+                    </div>
+
+                    <div class="product-actions-detailed" data-product-id="80">
+                        <button class="btn-add-to-cart" onclick="addToCartFromDetails()">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="9" cy="21" r="1"/>
+                                <circle cx="20" cy="21" r="1"/>
+                                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+                            </svg>
+                            Adicionar ao Carrinho
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-tabs">
+                <div class="tabs-header">
+                    <button class="tab-btn active" onclick="openTab('specs')">Especificações Técnicas</button>
+                    <button class="tab-btn" onclick="openTab('features')">Características</button>
+                    <button class="tab-btn" onclick="openTab('reviews')">Avaliações</button>
+                </div>
+
+                <div class="tab-content">
+                    <div id="specs" class="tab-pane active">
+                        <h3>Especificações Técnicas</h3>
+                        <table class="specs-table" id="specsTable">
+                            <tr>
+                                <td>Modelo</td>
+                                <td id="specModel">-</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div id="features" class="tab-pane">
+                        <h3>Características Principais</h3>
+                        <div class="features-grid" id="featuresGrid">
+                        </div>
+                    </div>
+
+                    <div id="reviews" class="tab-pane">
+                        <h3>Avaliações de Clientes</h3>
+                        <p style="color: #666;">Ainda não há avaliações para este produto. Seja o primeiro a avaliar!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" class="invert-logo">
+                            <rect width="32" height="32" rx="6" fill="white"/>
+                            <path d="M8 12L16 8L24 12V20L16 24L8 20V12Z" fill="black"/>
+                        </svg>
+                        <span>HardwarePT</span>
+                    </div>
+                    <p>A sua loja online de confiança para hardware de qualidade com preços competitivos.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Componentes</h4>
+                    <ul>
+                        <li><a href="produtos.html?categoria=processadores">Processadores</a></li>
+                        <li><a href="produtos.html?categoria=motherboards">Motherboards</a></li>
+                        <li><a href="produtos.html?categoria=placas-graficas">Placas Gráficas</a></li>
+                        <li><a href="produtos.html?categoria=memoria">Memória RAM</a></li>
+                        <li><a href="produtos.html?categoria=fontes">Fontes de Alimentação</a></li>
+                        <li><a href="produtos.html?categoria=caixas">Caixas de PC</a></li>
+                        <li><a href="produtos.html?categoria=coolers">Coolers</a></li>
+                        <li><a href="produtos.html?categoria=armazenamento">Armazenamento</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Empresa</h4>
+                    <ul>
+                        <li><a href="sobre.html">Sobre Nós</a></li>
+                        <li><a href="termos.html">Termos de Uso</a></li>
+                        <li><a href="privacidade.html">Privacidade</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Suporte</h4>
+                    <ul>
+                        <li><a href="suporte.html">Centro de Ajuda (FAQ)</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 HardwarePT. Todos os direitos reservados.</p>                
+                <div class="payment-methods">
+                    <div class="payment-icons">
+                        <img src="imagens/mastercard.webp" alt="Mastercard">
+                        <img src="imagens/visa.png" alt="Visa">
+                        <img src="imagens/multibanco.jpg" alt="Multibanco">
+                        <img src="imagens/mbway.jpeg" alt="MB Way">
+                        <img src="imagens/klarna.avif" alt="Klarna">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+<script src="js/auth.js"></script>
+<script src="js/config.js"></script>
+<script src="js/app.js"></script>
+<script src="js/produto-detalhes.js"></script>
+<script src="js/add-to-cart.js"></script>  
+<script src="js/carrinho-page.js"></script>
+
+</body>
+</html>

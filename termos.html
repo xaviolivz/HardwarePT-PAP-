@@ -1,0 +1,170 @@
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Termos de Uso - HardwarePT</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <!-- Menu Hambúrguer -->
+                <button class="menu-toggle" onclick="toggleMenu()" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+                <div class="logo">
+                    <a href="index.html" style="display: flex; align-items: center; gap: 0.5rem; text-decoration: none; color: inherit;">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                            <rect width="32" height="32" rx="6" fill="currentColor"/>
+                            <path d="M8 12L16 8L24 12V20L16 24L8 20V12Z" fill="white"/>
+                        </svg>
+                        <span>HardwarePT</span>
+                    </a>
+                </div>
+
+                <div class="header-actions">
+                    <button class="search-btn" onclick="toggleSearch()">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor">
+                            <circle cx="9" cy="9" r="6" stroke-width="2"/>
+                            <path d="M14 14L18 18" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </button>
+                    
+                    <button class="cart-btn" onclick="toggleCart()">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor">
+                            <path d="M2 2H4L6 14H16L18 6H6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <span class="cart-count" id="cartCount">0</span>
+                    </button>
+
+                    <div id="userMenu">
+                        <a href="login.html" class="login-btn" title="Entrar na conta">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                                <circle cx="12" cy="7" r="4"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Termos de Uso</h1>
+        </div>
+    </section>
+
+    <section class="content-page">
+        <div class="container">
+            <div class="content-box">
+                <h2>1. Aceitação dos Termos</h2>
+                <p>Ao aceder e utilizar o site HardwarePT, concorda em cumprir e estar vinculado aos seguintes termos e condições de uso.</p>
+                
+                <h2>2. Produtos e Serviços</h2>
+                <p>A HardwarePT comercializa licenças de software originais. Todas as licenças são fornecidas pelos fabricantes oficiais e são 100% legítimas.</p>
+                
+                <h2>3. Preços e Pagamento</h2>
+                <p>Todos os preços estão em Euros (€) e incluem IVA quando aplicável. Reservamo-nos o direito de alterar os preços sem aviso prévio. O pagamento deve ser efetuado no momento da compra através dos métodos disponíveis no site.</p>
+                
+                <h2>4. Entrega</h2>
+                <p>As licenças são entregues por email em até 10 minutos após a confirmação do pagamento. É responsabilidade do cliente fornecer um endereço de email válido.</p>
+                
+                <h2>5. Política de Devolução</h2>
+                <p>Oferecemos garantia de satisfação de 30 dias. Se não estiver satisfeito com o produto, pode solicitar reembolso dentro deste período, desde que a licença não tenha sido ativada.</p>
+                
+                <h2>6. Uso das Licenças</h2>
+                <p>As licenças adquiridas são para uso pessoal ou empresarial conforme especificado no produto. É proibida a revenda ou distribuição não autorizada das licenças.</p>
+                
+                <h2>7. Propriedade Intelectual</h2>
+                <p>Todo o conteúdo do site, incluindo textos, gráficos, logos e imagens, é propriedade da HardwarePT ou dos seus licenciadores e está protegido por leis de direitos autorais.</p>
+                
+                <h2>8. Limitação de Responsabilidade</h2>
+                <p>A HardwarePT não se responsabiliza por danos indiretos, incidentais ou consequenciais resultantes do uso ou incapacidade de usar os produtos adquiridos.</p>
+                
+                <h2>9. Privacidade</h2>
+                <p>O uso de informações pessoais é regido pela nossa <a href="privacidade.html">Política de Privacidade</a>.</p>
+                
+                <h2>10. Alterações aos Termos</h2>
+                <p>Reservamo-nos o direito de modificar estes termos a qualquer momento. As alterações entram em vigor imediatamente após a publicação no site.</p>
+                
+                <h2>11. Lei Aplicável</h2>
+                <p>Estes termos são regidos pelas leis de Portugal. Qualquer disputa será resolvida nos tribunais portugueses.</p>
+                
+                <h2>12. Contacto</h2>
+                <p>Para questões sobre estes termos, entre em contacto através da <a href="contacto.html">nossa página de contacto</a>.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" class="invert-logo">
+                            <rect width="32" height="32" rx="6" fill="white"/>
+                            <path d="M8 12L16 8L24 12V20L16 24L8 20V12Z" fill="black"/>
+                        </svg>
+                        <span>HardwarePT</span>
+                    </div>
+                    <p>A sua loja online de confiança para hardware de qualidade com preços competitivos.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Componentes</h4>
+                    <ul>
+                        <li><a href="produtos.html?categoria=processadores">Processadores</a></li>
+                        <li><a href="produtos.html?categoria=motherboards">Motherboards</a></li>
+                        <li><a href="produtos.html?categoria=placas-graficas">Placas Gráficas</a></li>
+                        <li><a href="produtos.html?categoria=memoria">Memória RAM</a></li>
+                        <li><a href="produtos.html?categoria=fontes">Fontes de Alimentação</a></li>
+                        <li><a href="produtos.html?categoria=caixas">Caixas de PC</a></li>
+                        <li><a href="produtos.html?categoria=coolers">Coolers</a></li>
+                        <li><a href="produtos.html?categoria=armazenamento">Armazenamento</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Empresa</h4>
+                    <ul>
+                        <li><a href="sobre.html">Sobre Nós</a></li>
+                        <li><a href="termos.html">Termos de Uso</a></li>
+                        <li><a href="privacidade.html">Privacidade</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Suporte</h4>
+                    <ul>
+                        <li><a href="suporte.html">Centro de Ajuda (FAQ)</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 HardwarePT. Todos os direitos reservados.</p>                
+                <div class="payment-methods">
+                    <div class="payment-icons">
+                        <img src="imagens/mastercard.webp" alt="Mastercard">
+                        <img src="imagens/visa.png" alt="Visa">
+                        <img src="imagens/multibanco.jpg" alt="Multibanco">
+                        <img src="imagens/mbway.jpeg" alt="MB Way">
+                        <img src="imagens/klarna.avif" alt="Klarna">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="js/auth.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/add-to-cart.js"></script>
+    <script src="js/carrinho-page.js"></script>
+
+</body>
+</html>

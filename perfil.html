@@ -1,0 +1,539 @@
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Perfil - HardwarePT</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <!-- Menu Hambúrguer -->
+                <button class="menu-toggle" onclick="toggleMenu()" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+                <div class="logo">
+                    <a href="index.html" style="display: flex; align-items: center; gap: 0.5rem; text-decoration: none; color: inherit;">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                            <rect width="32" height="32" rx="6" fill="currentColor"/>
+                            <path d="M8 12L16 8L24 12V20L16 24L8 20V12Z" fill="white"/>
+                        </svg>
+                        <span>HardwarePT</span>
+                    </a>
+                </div>
+
+                <div class="header-actions">
+                    <button class="search-btn" onclick="toggleSearch()">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor">
+                            <circle cx="9" cy="9" r="6" stroke-width="2"/>
+                            <path d="M14 14L18 18" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </button>
+                    
+                    <button class="cart-btn" onclick="toggleCart()">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor">
+                            <path d="M2 2H4L6 14H16L18 6H6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <span class="cart-count" id="cartCount">0</span>
+                    </button>
+
+                    <div id="userMenu">
+                        <a href="login.html" class="login-btn" title="Entrar na conta">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                                <circle cx="12" cy="7" r="4"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="menu-overlay" id="menuOverlay" onclick="toggleMenu()"></div>
+<nav class="side-menu" id="sideMenu">
+    <div class="side-menu-header">
+        <h3>Categorias</h3>
+        <button onclick="toggleMenu()" class="close-menu">×</button>
+    </div>
+    <ul class="side-menu-list">
+        <li>
+            <a href="produtos.html?categoria=processadores">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <rect x="4" y="4" width="16" height="16" rx="2"/>
+                    <rect x="9" y="9" width="6" height="6"/>
+                    <line x1="9" y1="2" x2="9" y2="4"/>
+                    <line x1="15" y1="2" x2="15" y2="4"/>
+                    <line x1="9" y1="20" x2="9" y2="22"/>
+                    <line x1="15" y1="20" x2="15" y2="22"/>
+                    <line x1="2" y1="9" x2="4" y2="9"/>
+                    <line x1="2" y1="15" x2="4" y2="15"/>
+                    <line x1="20" y1="9" x2="22" y2="9"/>
+                    <line x1="20" y1="15" x2="22" y2="15"/>
+                </svg>
+                <span>Processadores</span>
+            </a>
+        </li>
+        <li>
+            <a href="produtos.html?categoria=placas-graficas">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <rect x="2" y="6" width="20" height="12" rx="2"/>
+                    <circle cx="6" cy="12" r="2"/>
+                    <line x1="10" y1="10" x2="20" y2="10"/>
+                    <line x1="10" y1="14" x2="20" y2="14"/>
+                </svg>
+                <span>Placas Gráficas</span>
+            </a>
+        </li>
+        <li>
+            <a href="produtos.html?categoria=motherboards">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <rect x="3" y="3" width="18" height="18" rx="2"/>
+                    <line x1="3" y1="9" x2="21" y2="9"/>
+                    <line x1="9" y1="21" x2="9" y2="9"/>
+                </svg>
+                <span>Motherboards</span>
+            </a>
+        </li>
+        <li>
+            <a href="produtos.html?categoria=memoria">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <rect x="3" y="8" width="18" height="8" rx="1"/>
+                    <rect x="5" y="10" width="2" height="4"/>
+                    <rect x="9" y="10" width="2" height="4"/>
+                    <rect x="13" y="10" width="2" height="4"/>
+                    <rect x="17" y="10" width="2" height="4"/>
+                </svg>
+                <span>Memória RAM</span>
+            </a>
+        </li>
+        <li>
+            <a href="produtos.html?categoria=armazenamento">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <rect x="3" y="6" width="18" height="12" rx="2"/>
+                    <circle cx="7" cy="12" r="2"/>
+                    <line x1="12" y1="10" x2="18" y2="10"/>
+                    <line x1="12" y1="14" x2="18" y2="14"/>
+                </svg>
+                <span>Armazenamento</span>
+            </a>
+        </li>
+        <li>
+            <a href="produtos.html?categoria=fontes">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <rect x="4" y="8" width="16" height="12" rx="2"/>
+                    <path d="M12 8V4"/>
+                    <circle cx="9" cy="14" r="1.5"/>
+                    <circle cx="15" cy="14" r="1.5"/>
+                </svg>
+                <span>Fontes de Alimentação</span>
+            </a>
+        </li>
+        <li>
+            <a href="produtos.html?categoria=caixas">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <rect x="5" y="2" width="14" height="20" rx="2"/>
+                    <circle cx="12" cy="18" r="1"/>
+                    <line x1="9" y1="6" x2="15" y2="6"/>
+                    <line x1="9" y1="10" x2="15" y2="10"/>
+                </svg>
+                <span>Caixas de PC</span>
+            </a>
+        </li>
+        <li>
+            <a href="produtos.html?categoria=coolers">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <circle cx="12" cy="12" r="9"/>
+                    <circle cx="12" cy="12" r="3"/>
+                    <line x1="12" y1="3" x2="12" y2="9"/>
+                    <line x1="12" y1="15" x2="12" y2="21"/>
+                    <line x1="3" y1="12" x2="9" y2="12"/>
+                    <line x1="15" y1="12" x2="21" y2="12"/>
+                </svg>
+                <span>Coolers</span>
+            </a>
+        </li>
+        <li>
+            <a href="produtos.html?categoria=acessorios">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <rect x="2" y="7" width="20" height="14" rx="2"/>
+                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                </svg>
+                <span>Acessórios</span>
+            </a>
+        </li>
+    </ul>
+</nav>
+
+    <main class="profile-container">
+    <div class="container">
+        <div class="profile-layout">
+            <aside class="profile-sidebar">
+                <h3>O Meu Perfil</h3>
+                <img src="imagens/img_perfil.avif" alt="Avatar" class="profile-avatar">
+                <nav class="profile-nav">
+                    <a href="#perfil" class="profile-nav-link active" onclick="mostrarSeccao('perfil-content', this)">
+                        <i class="fas fa-user"></i>
+                        Informa&ccedil;&otilde;es
+                    </a>
+                    <a href="#seguranca" class="profile-nav-link" onclick="mostrarSeccao('seguranca-content', this)">
+                        <i class="fas fa-lock"></i>
+                        Seguran&ccedil;a
+                    </a>
+                    <a href="#morada" class="profile-nav-link" onclick="mostrarSeccao('morada-content', this)">
+                        <i class="fas fa-map-marker-alt"></i>
+                        Moradas
+                    </a><a href="minhas-compras.html" class="profile-nav-link">
+                        <i class="fas fa-shopping-bag"></i>
+                        As Minhas Compras
+                    </a>
+                    
+                    
+                    <button onclick="logout()" class="btn-logout">
+                        <i class="fas fa-sign-out-alt"></i>
+                        Sair
+                    </button>
+                </nav>
+            </aside>
+            
+            <div class="profile-main">
+                <div id="perfil-content" class="profile-card">
+                    <h2>As Minhas Informações</h2>
+                    <form onsubmit="atualizarPerfil(event)">
+                        <div class="form-group">
+                            <label>Nome Completo:</label>
+                            <input type="text" id="nome" value="">
+                        </div>
+                        <div class="form-group">
+                            <label>Email:</label>
+                            <input type="email" id="email" value="">
+                        </div>
+                        <div class="form-group">
+                            <label>Telefone:</label>
+                            <input type="tel" id="telefone" value="">
+                        </div>
+                        <div class="form-group">
+                            <label>NIF:</label>
+                            <input type="text" id="nif" maxlength="9" value="">
+                        </div>
+                        <div class="form-group">
+                            <label>Data de Nascimento:</label>
+                            <input type="date" id="dataNascimento" value="">
+                        </div>
+                        <div class="form-group">
+                            <label>Morada:</label>
+                            <input type="text" id="morada" value="">
+                        </div>
+                        <button type="submit" class="btn-primary">Guardar Alterações</button>
+                    </form>
+                </div>
+                
+                <div id="pedidos-content" class="profile-card hidden">
+                    <h2>As Minhas Compras</h2>
+                    <table class="orders-table">
+                        <thead>
+                            <tr>
+                                <th>N&uacute;mero</th>
+                                <th>Data</th>
+                                <th>Total</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="pedidos-list">
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- MORADAS -->
+                <div id="morada-content" class="profile-card hidden">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                        <h2 style="margin: 0;">As Minhas Moradas</h2>
+                        <button class="btn-primary" onclick="mostrarFormMorada()" style="padding: 0.5rem 1rem; font-size: 0.9rem;">+ Adicionar Morada</button>
+                    </div>
+
+                    <div id="formNovaMorada" style="display: none; margin-bottom: 1.5rem; padding: 1.5rem; border: 1px solid var(--border-color, #333); border-radius: 8px;">
+                        <h3 style="margin-bottom: 1rem;">Nova Morada</h3>
+                        <form onsubmit="guardarMorada(event)">
+                            <div class="form-group">
+                                <label>Nome (ex: Casa, Trabalho):</label>
+                                <input type="text" id="moradaNome" required placeholder="Casa">
+                            </div>
+                            <div class="form-group">
+                                <label>Morada Completa:</label>
+                                <input type="text" id="moradaEndereco" required placeholder="Rua, n&uacute;mero, andar">
+                            </div>
+                            <div style="display: flex; gap: 1rem;">
+                                <div class="form-group" style="flex: 1;">
+                                    <label>C&oacute;digo Postal:</label>
+                                    <input type="text" id="moradaCodigo" required placeholder="0000-000">
+                                </div>
+                                <div class="form-group" style="flex: 2;">
+                                    <label>Cidade:</label>
+                                    <input type="text" id="moradaCidade" required placeholder="Lisboa">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Pa&iacute;s:</label>
+                                <input type="text" id="moradaPais" value="Portugal">
+                            </div>
+                            <div style="display: flex; gap: 0.5rem;">
+                                <button type="submit" class="btn-primary" style="padding: 0.5rem 1.2rem;">Guardar</button>
+                                <button type="button" class="btn-logout" onclick="esconderFormMorada()" style="padding: 0.5rem 1.2rem;">Cancelar</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div id="listaMoradas">
+                        <div class="morada-card" style="padding: 1.2rem; border: 1px solid var(--border-color, #333); border-radius: 8px; margin-bottom: 1rem; position: relative;">
+                            <span style="position: absolute; top: 0.8rem; right: 0.8rem; background: var(--accent-color, #00bfa6); color: #000; padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.75rem; font-weight: 600;">Predefinida</span>
+                            <p style="font-weight: 600; margin-bottom: 0.3rem;">Casa</p>
+                            <p style="opacity: 0.7; font-size: 0.9rem; line-height: 1.5;">Rua Exemplo, 123, 1&ordm; Esq<br>1000-001 Lisboa<br>Portugal</p>
+                            <div style="display: flex; gap: 0.5rem; margin-top: 0.8rem;">
+                                <button class="btn-link" style="color: var(--accent-color, #00bfa6); background: none; border: none; cursor: pointer; font-size: 0.85rem;">Editar</button>
+                                <button class="btn-link" style="color: #e74c3c; background: none; border: none; cursor: pointer; font-size: 0.85rem;">Remover</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SEGURANCA -->
+                <div id="seguranca-content" class="profile-card hidden">
+                    <h2>Seguran&ccedil;a da Conta</h2>
+                    
+                    <!-- Alterar Password -->
+                    <div style="margin-bottom: 2rem;">
+                        <h3 style="font-size: 1.1rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                            Alterar Password
+                        </h3>
+                        <form onsubmit="alterarPassword(event)">
+                            <div class="form-group">
+                                <label>Password Atual:</label>
+                                <div style="position: relative;">
+                                    <input type="password" id="passwordAtual" required>
+                                    <button type="button" onclick="togglePasswordVisibility('passwordAtual')" style="position: absolute; right: 0.8rem; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; color: inherit; opacity: 0.6;">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Nova Password:</label>
+                                <div style="position: relative;">
+                                    <input type="password" id="passwordNova" required minlength="8">
+                                    <button type="button" onclick="togglePasswordVisibility('passwordNova')" style="position: absolute; right: 0.8rem; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; color: inherit; opacity: 0.6;">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                                    </button>
+                                </div> 
+                                <small id="passwordStrengthText" style="opacity: 0.6; font-size: 0.8rem;"></small>
+                            </div>
+                            <div class="form-group">
+                                <label>Confirmar Nova Password:</label>
+                                <input type="password" id="passwordConfirmar" required minlength="8">
+                            </div>
+                            <button type="submit" class="btn-primary">Alterar Password</button>
+                        </form>
+                    </div>                   
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" class="invert-logo">
+                            <rect width="32" height="32" rx="6" fill="white"/>
+                            <path d="M8 12L16 8L24 12V20L16 24L8 20V12Z" fill="black"/>
+                        </svg>
+                        <span>HardwarePT</span>
+                    </div>
+                    <p>A sua loja online de confiança para hardware de qualidade com preços competitivos.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Componentes</h4>
+                    <ul>
+                        <li><a href="produtos.html?categoria=processadores">Processadores</a></li>
+                        <li><a href="produtos.html?categoria=motherboards">Motherboards</a></li>
+                        <li><a href="produtos.html?categoria=placas-graficas">Placas Gráficas</a></li>
+                        <li><a href="produtos.html?categoria=memoria">Memória RAM</a></li>
+                        <li><a href="produtos.html?categoria=fontes">Fontes de Alimentação</a></li>
+                        <li><a href="produtos.html?categoria=caixas">Caixas de PC</a></li>
+                        <li><a href="produtos.html?categoria=coolers">Coolers</a></li>
+                        <li><a href="produtos.html?categoria=armazenamento">Armazenamento</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Empresa</h4>
+                    <ul>
+                        <li><a href="sobre.html">Sobre Nós</a></li>
+                        <li><a href="termos.html">Termos de Uso</a></li>
+                        <li><a href="privacidade.html">Privacidade</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Suporte</h4>
+                    <ul>
+                        <li><a href="suporte.html">Centro de Ajuda (FAQ)</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 HardwarePT. Todos os direitos reservados.</p>                
+                <div class="payment-methods">
+                    <div class="payment-icons">
+                        <img src="imagens/mastercard.webp" alt="Mastercard">
+                        <img src="imagens/visa.png" alt="Visa">
+                        <img src="imagens/multibanco.jpg" alt="Multibanco">
+                        <img src="imagens/mbway.jpeg" alt="MB Way">
+                        <img src="imagens/klarna.avif" alt="Klarna">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/auth.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/add-to-cart.js"></script>
+    <script src="js/carrinho.js"></script>
+    <script src="js/menu.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            carregarPerfil();
+            // Setup password strength checker
+            var passInput = document.getElementById('passwordNova');
+            if (passInput) {
+                passInput.addEventListener('input', verificarForcaPassword);
+            }
+            // Setup toggle visual styles
+            setupToggles();
+        });
+
+        function carregarPerfil() {
+            if (typeof perfil !== 'undefined' && perfil.nome) {
+                document.getElementById('nome').value = perfil.nome;
+                document.getElementById('email').value = perfil.email;
+                document.getElementById('telefone').value = perfil.telefone || '';
+                document.getElementById('morada').value = perfil.morada || '';
+                document.getElementById('nif').value = perfil.nif || '';
+                document.getElementById('dataNascimento').value = perfil.dataNascimento || '';
+            }
+        }
+
+        function atualizarPerfil(e) {
+            e.preventDefault();
+            var perfilData = {
+                nome: document.getElementById('nome').value,
+                email: document.getElementById('email').value,
+                telefone: document.getElementById('telefone').value,
+                morada: document.getElementById('morada').value,
+                nif: document.getElementById('nif').value,
+                dataNascimento: document.getElementById('dataNascimento').value
+            };
+            alert('Perfil atualizado com sucesso!');
+        }
+
+        /* Navegacao entre seccoes */
+        function mostrarSeccao(seccaoId, link) {
+            // Esconder todas as seccoes
+            var seccoes = document.querySelectorAll('.profile-main .profile-card');
+            seccoes.forEach(function(s) {
+                s.classList.add('hidden');
+            });
+            // Mostrar a seccao escolhida
+            var target = document.getElementById(seccaoId);
+            if (target) {
+                target.classList.remove('hidden');
+            }
+            // Atualizar link ativo
+            if (link) {
+                var links = document.querySelectorAll('.profile-nav-link');
+                links.forEach(function(l) {
+                    l.classList.remove('active');
+                });
+                link.classList.add('active');
+            }
+        }
+
+        /* Alterar Password */
+        function alterarPassword(e) {
+            e.preventDefault();
+            var atual = document.getElementById('passwordAtual').value;
+            var nova = document.getElementById('passwordNova').value;
+            var confirmar = document.getElementById('passwordConfirmar').value;
+
+            if (nova.length < 8) {
+                alert('A password deve ter pelo menos 8 caracteres.');
+                return;
+            }
+            if (nova !== confirmar) {
+                alert('As passwords n\u00e3o coincidem.');
+                return;
+            }
+            alert('Password alterada com sucesso!');
+            document.getElementById('passwordAtual').value = '';
+            document.getElementById('passwordNova').value = '';
+            document.getElementById('passwordConfirmar').value = '';
+            document.getElementById('passwordStrengthBar').style.width = '0';
+            document.getElementById('passwordStrengthText').textContent = '';
+        }
+
+        function togglePasswordVisibility(inputId) {
+            var input = document.getElementById(inputId);
+            input.type = input.type === 'password' ? 'text' : 'password';
+        }
+
+
+        function setupToggles() {
+            var toggles = document.querySelectorAll('.toggle-switch input[type="checkbox"]');
+            toggles.forEach(function(toggle) {
+                var span = toggle.nextElementSibling;
+                if (toggle.checked) {
+                    span.style.background = 'var(--accent-color, #00bfa6)';
+                }
+                // Add the circle indicator
+                span.innerHTML = '';
+                var circle = document.createElement('span');
+                circle.style.cssText = 'position:absolute;height:20px;width:20px;left:3px;bottom:3px;background:white;border-radius:50%;transition:0.3s;';
+                if (toggle.checked) circle.style.transform = 'translateX(22px)';
+                span.appendChild(circle);
+                toggle.addEventListener('change', function() {
+                    if (this.checked) {
+                        circle.style.transform = 'translateX(22px)';
+                        span.style.background = 'var(--accent-color, #00bfa6)';
+                    } else {
+                        circle.style.transform = 'translateX(0)';
+                        span.style.background = '#444';
+                    }
+                });
+            });
+        }
+
+        /* Moradas */
+        function mostrarFormMorada() {
+            document.getElementById('formNovaMorada').style.display = 'block';
+        }
+        function esconderFormMorada() {
+            document.getElementById('formNovaMorada').style.display = 'none';
+        }
+        function guardarMorada(e) {
+            e.preventDefault();
+            alert('Morada guardada com sucesso!');
+            esconderFormMorada();
+        }
+
+    </script>
+    
+</body>
+</html>
